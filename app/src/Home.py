@@ -1,17 +1,14 @@
 import streamlit as st
 import logging
 
-# Set up logging
 logger = logging.getLogger(__name__)
 
-# Page configuration
 st.set_page_config(
     page_title="MealBuddy - Meal Planning Made Easy",
     page_icon="🍽️",
     layout="wide"
 )
 
-# Custom CSS for better styling
 st.markdown("""
     <style>
     .main-header {
@@ -26,11 +23,10 @@ st.markdown("""
         text-align: center;
         margin-bottom: 2rem;
     }
-    .persona-card {
-        background-color: #f0f2f6;
-        padding: 20px;
-        border-radius: 10px;
-        margin: 10px 0;
+    .logo {
+        text-align: center;
+        font-size: 5rem;
+        margin-bottom: 0;
     }
     .stButton>button {
         width: 100%;
@@ -43,11 +39,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Header
-st.markdown('<h1 class="main-header">🍽️ MealBuddy</h1>', unsafe_allow_html=True)
+st.markdown('<div class="logo">🍽️</div>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header">MealBuddy</h1>', unsafe_allow_html=True)
 st.markdown('<p class="sub-header">Your Personal Meal Planning Assistant</p>', unsafe_allow_html=True)
 
-# Welcome message
 st.markdown("""
 ---
 ### Welcome to MealBuddy!
@@ -56,13 +51,11 @@ Plan your meals, manage your grocery list, and track your nutrition - all in one
 **Select your role below to get started:**
 """)
 
-# Create columns for persona selection
 col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("### 🎓 Primary Users")
 
-    # Jordan Thompson - College Junior
     with st.container():
         st.markdown("#### Jordan Thompson - College Junior")
         st.write("*Track meals, plan your week, and achieve health goals*")
@@ -84,7 +77,7 @@ with col1:
             if jordan_selected != "Select a user...":
                 st.session_state['user_type'] = 'jordan'
                 st.session_state['user_name'] = jordan_selected
-                st.session_state['user_id'] = 1  # In real app, would get from database
+                st.session_state['user_id'] = 1
                 st.success(f"✅ Logged in as {jordan_selected}")
                 st.info("👈 Use the sidebar to navigate to your features")
             else:
@@ -92,7 +85,6 @@ with col1:
 
     st.markdown("---")
 
-    # Sarah Martinez - Young Adult
     with st.container():
         st.markdown("#### Sarah Martinez - Young Adult")
         st.write("*Reduce food waste, manage pantry, find recipes*")
@@ -123,7 +115,6 @@ with col1:
 with col2:
     st.markdown("### 📊 Advanced Users")
 
-    # Michael Johnson - Data Analyst
     with st.container():
         st.markdown("#### Michael Johnson - Data Analyst")
         st.write("*Analyze nutrition data, export reports, track costs*")
@@ -153,7 +144,6 @@ with col2:
 
     st.markdown("---")
 
-    # Emily Carter - System Admin
     with st.container():
         st.markdown("#### Emily Carter - System Admin")
         st.write("*Monitor system health, view logs, maintain data*")
@@ -174,13 +164,12 @@ with col2:
             if emily_selected != "Select a user...":
                 st.session_state['user_type'] = 'emily'
                 st.session_state['user_name'] = emily_selected
-                st.session_state['user_id'] = 99  # Admin user
+                st.session_state['user_id'] = 99
                 st.success(f"✅ Logged in as {emily_selected}")
                 st.info("👈 Use the sidebar to navigate to your features")
             else:
                 st.error("Please select a user first")
 
-# Display current session info if logged in
 st.markdown("---")
 if 'user_type' in st.session_state:
     st.success(f"🟢 Currently logged in as: **{st.session_state.get('user_name', 'Unknown User')}**")
@@ -188,7 +177,6 @@ if 'user_type' in st.session_state:
 else:
     st.info("👆 Please select a user type and login above to continue")
 
-# Feature highlights
 st.markdown("---")
 st.markdown("### ✨ Key Features")
 
@@ -210,7 +198,6 @@ with feature_col4:
     st.markdown("#### 💰 Cost Analysis")
     st.write("Track meal costs and optimize your food budget")
 
-# Footer
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666; padding: 20px;'>
