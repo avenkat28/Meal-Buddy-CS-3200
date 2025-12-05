@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from modules.api_client import api
+from app.src.modules.api_client import api
 
 st.set_page_config(page_title="Cost Analysis", page_icon="💰", layout="wide")
 
