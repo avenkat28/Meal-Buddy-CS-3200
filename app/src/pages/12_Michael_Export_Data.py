@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from modules.api_client import api
+from app.src.modules.api_client import api
 
 st.set_page_config(page_title="Export Data", page_icon="📤", layout="wide")
 
