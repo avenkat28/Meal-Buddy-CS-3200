@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Admin Dashboard", page_icon="", layout="wide")
+st.set_page_config(page_title="Admin Dashboard", page_icon="⚙️", layout="wide")
 
 if 'user_type' not in st.session_state or st.session_state['user_type'] != 'emily':
     st.warning("Please login from the home page first")

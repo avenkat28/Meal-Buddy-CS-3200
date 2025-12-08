@@ -1,12 +1,12 @@
 import streamlit as st
 
-st.set_page_config(page_title="Sarah's Kitchen", page_icon="", layout="wide")
+st.set_page_config(page_title="Sarah's Kitchen", page_icon="🏠", layout="wide")
 
 if 'user_type' not in st.session_state or st.session_state['user_type'] != 'sarah':
-    st.warning("Please login from the home page first")
+    st.warning("⚠️ Please login from the home page first")
     st.stop()
 
-st.title("Welcome, " + st.session_state.get('user_name', 'Sarah'))
+st.title("🏠 Welcome, " + st.session_state.get('user_name', 'Sarah'))
 st.markdown("### Your Kitchen Management Hub")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -25,21 +25,21 @@ with col4:
 
 st.markdown("---")
 
-st.markdown("### Quick Actions")
+st.markdown("### 🚀 Quick Actions")
 
 action_col1, action_col2, action_col3 = st.columns(3)
 
 with action_col1:
-    if st.button("Manage Pantry", use_container_width=True):
+    if st.button("📦 Manage Pantry", use_container_width=True):
         st.switch_page("pages/21_Sarah_Pantry.py")
     st.write("Track what you have at home")
 
 with action_col2:
-    if st.button("Get Suggestions", use_container_width=True):
+    if st.button("💡 Get Suggestions", use_container_width=True):
         st.switch_page("pages/22_Sarah_Meal_Suggestions.py")
     st.write("Find recipes using your ingredients")
 
 with action_col3:
-    if st.button("Browse Recipes", use_container_width=True):
+    if st.button("📖 Browse Recipes", use_container_width=True):
         st.switch_page("pages/23_Sarah_Recipe_Browser.py")
     st.write("Explore new meal ideas")

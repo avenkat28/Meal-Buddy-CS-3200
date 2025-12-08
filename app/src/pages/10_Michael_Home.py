@@ -33,15 +33,15 @@ action_col1, action_col2, action_col3 = st.columns(3)
 
 with action_col1:
     if st.button("View Analytics", use_container_width=True):
-        st.switch_page("pages/11_Michael_Analytics.py")
+        st.switch_page("app/src/pages/11_Michael_Analytics.py")
     st.write("Deep dive into nutrition trends")
 
 with action_col2:
     if st.button("Export Data", use_container_width=True):
-        st.switch_page("pages/12_Michael_Export_Data.py")
+        st.switch_page("app/src/pages/12_Michael_Export_Data.py")
     st.write("Download CSV reports")
 
 with action_col3:
     if st.button("Cost Analysis", use_container_width=True):
-        st.switch_page("pages/13_Michael_Cost_Analysis.py")
+        st.switch_page("app/src/pages/13_Michael_Cost_Analysis.py")
     st.write("Analyze meal costs")
