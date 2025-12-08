@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into inventory (inventory_id, user_id, ingredient_id, quantity, expiration_date) values (1, 18, 23, 5, '2025-02-10');
 insert into inventory (inventory_id, user_id, ingredient_id, quantity, expiration_date) values (2, 5, 32, 3, '2025-04-06');
 insert into inventory (inventory_id, user_id, ingredient_id, quantity, expiration_date) values (3, 15, 11, 1, '2025-09-20');

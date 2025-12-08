@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into planned_meals (planned_meal_id, plan_id, meal_id, day_of_week, meal_type) values (1, 19, 20, 'Saturday', 'Dinner');
 insert into planned_meals (planned_meal_id, plan_id, meal_id, day_of_week, meal_type) values (2, 10, 5, 'Tuesday', 'Lunch');
 insert into planned_meals (planned_meal_id, plan_id, meal_id, day_of_week, meal_type) values (3, 4, 2, 'Friday', 'Lunch');

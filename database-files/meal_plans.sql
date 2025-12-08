@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into meal_plans (plan_id, user_id, week_start, week_end, status) values (1, 25, '8/2/2025', '5/24/2025', 'failed');
 insert into meal_plans (plan_id, user_id, week_start, week_end, status) values (2, 37, '10/23/2025', '11/17/2025', 'draft');
 insert into meal_plans (plan_id, user_id, week_start, week_end, status) values (3, 28, '5/1/2025', '11/24/2025', 'corrupted');

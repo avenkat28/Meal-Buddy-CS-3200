@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into meal_cost_history (cost_id, meal_id, calculation_date, total_cost, cost_per_serving) values (1, 20, '2025-03-06', 31.17, 13.1);
 insert into meal_cost_history (cost_id, meal_id, calculation_date, total_cost, cost_per_serving) values (2, 16, '2025-04-08', 38.72, 2.24);
 insert into meal_cost_history (cost_id, meal_id, calculation_date, total_cost, cost_per_serving) values (3, 10, '2025-10-21', 42.81, 10.46);

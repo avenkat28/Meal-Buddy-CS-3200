@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into api_logs (log_id, api_service, endpoint, request_time, response_time_ms, status_code) values (1, 'AUTH_SERVICE', '/meal-plans/generate', '2025-07-18T13:35:00Z', 152, 200);
 insert into api_logs (log_id, api_service, endpoint, request_time, response_time_ms, status_code) values (2, 'INGREDIENT_SERVICE', '/admin/error_logs', '2025-07-05T22:25:47Z', 184, 200);
 insert into api_logs (log_id, api_service, endpoint, request_time, response_time_ms, status_code) values (3, 'INVENTORY_SERVICE', '/meal-plans/generate', '2025-04-20T00:35:10Z', 61, 201);

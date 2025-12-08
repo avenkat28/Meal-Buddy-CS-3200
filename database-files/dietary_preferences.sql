@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into dietary_preferences (preference_id, name) values (1, 'Paleo');
 insert into dietary_preferences (preference_id, name) values (2, 'Dairy-Free');
 insert into dietary_preferences (preference_id, name) values (3, 'Nut Allergy');

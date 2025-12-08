@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into grocery_list (gl_id, user_id, date_generated) values (1, 34, '2025-08-13');
 insert into grocery_list (gl_id, user_id, date_generated) values (2, 31, '2024-12-12');
 insert into grocery_list (gl_id, user_id, date_generated) values (3, 14, '2025-12-01');

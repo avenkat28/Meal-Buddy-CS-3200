@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into users (user_id, username, email, password_hash, user_type, account_status, created_at, last_login) values (1, 'bheggadon0', 'hmcallan0@amazon.co.jp', '$2a$04$Glzqq5IszgIaPBRJ9eLiVeBGEYcPMf4Glco9jNZ44b5/wh82B5Rl.', 'regular', 'active', '2025-11-12', '2025-07-31');
 insert into users (user_id, username, email, password_hash, user_type, account_status, created_at, last_login) values (2, 'ubeveridge1', 'tkuzemka1@spotify.com', '$2a$04$m8qzNSxKbfKzIdyBrX31R.8f1iQcoVHNAfYEh32pZv/D9eMu7.OSK', 'admin', 'suspended', '2025-04-14', '2024-12-29');
 insert into users (user_id, username, email, password_hash, user_type, account_status, created_at, last_login) values (3, 'cpachmann2', 'tdudenie2@businessinsider.com', '$2a$04$22nXnjV5Fv7yDKi0O6T5PeePZPNMRdbe2uTIbe/TdcrNvxtWD0XNq', 'regular', 'suspended', '2025-11-04', '2025-08-27');

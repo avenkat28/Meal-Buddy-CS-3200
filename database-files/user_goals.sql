@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into user_goals (goal_id, user_id, goal_description, target_date, is_active) values (1, 3, 'Incorporate more superfoods', '2025-07-19', false);
 insert into user_goals (goal_id, user_id, goal_description, target_date, is_active) values (2, 37, 'Join a rowing team', '2024-12-08', false);
 insert into user_goals (goal_id, user_id, goal_description, target_date, is_active) values (3, 27, 'Try a new fitness app', '2025-10-18', false);

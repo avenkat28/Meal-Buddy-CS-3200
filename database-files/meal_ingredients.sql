@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into meal_ingredients (meal_id, ingredient_id, quantity, unit) values (15, 62, 6, 'tsp');
 insert into meal_ingredients (meal_id, ingredient_id, quantity, unit) values (40, 50, 1, 'tsp');
 insert into meal_ingredients (meal_id, ingredient_id, quantity, unit) values (22, 28, 1, 'tsp');

@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into meals (meal_id, meal_name, difficulty, cooking_time_minutes) values (1, 'Eggs Benedict', 'easy', 152);
 insert into meals (meal_id, meal_name, difficulty, cooking_time_minutes) values (2, 'Ribs', 'medium', 133);
 insert into meals (meal_id, meal_name, difficulty, cooking_time_minutes) values (3, 'Veggie Omelet', 'medium', 45);

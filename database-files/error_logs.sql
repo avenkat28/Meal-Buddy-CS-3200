@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into error_logs (error_id, error_type, error_message, severity, timestamp, related_user_id, related_plan_id, related_ingredient_id, is_resolved, resolved_by_admin_id) values (1, 'DB_WRITE_ERROR', 'Notice: Undefined constant CONSTANT_NAME', 'critical: 60', '2025-05-04', 7, 14, 76, false, 35);
 insert into error_logs (error_id, error_type, error_message, severity, timestamp, related_user_id, related_plan_id, related_ingredient_id, is_resolved, resolved_by_admin_id) values (2, 'DB_WRITE_ERROR', 'Fatal error: Uncaught Error: Call to undefined function function_name', 'critical: 60', '2025-11-05', 27, 39, 59, true, null);
 insert into error_logs (error_id, error_type, error_message, severity, timestamp, related_user_id, related_plan_id, related_ingredient_id, is_resolved, resolved_by_admin_id) values (3, 'AUTH_TIMEOUT', 'Notice: Undefined property: object->property', 'critical: 60', '2025-12-01', 30, null, 44, false, 34);

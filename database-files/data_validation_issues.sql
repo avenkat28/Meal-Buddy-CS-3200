@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into data_validation_issues (validation_id, table_name, record_id, issue_type, severity, detected_at, is_fixed, fixed_by_admin_id) values (1, 'users: 15', 17, 'DUPLICATE_NAME', 'low: 30', '2025-03-15', false, 23);
 insert into data_validation_issues (validation_id, table_name, record_id, issue_type, severity, detected_at, is_fixed, fixed_by_admin_id) values (2, 'user_goals: 15', 48, 'OUT_OF_DATE', 'high: 30', '2025-11-27', false, null);
 insert into data_validation_issues (validation_id, table_name, record_id, issue_type, severity, detected_at, is_fixed, fixed_by_admin_id) values (3, 'ingredients: 40', 39, 'DUPLICATE_NAME', 'low: 30', '2025-11-19', false, 14);

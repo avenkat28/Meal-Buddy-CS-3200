@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into grocery_list_ingredients (gl_id, ingredient_id, quantity, unit) values (39, 65, 5, 'whole');
 insert into grocery_list_ingredients (gl_id, ingredient_id, quantity, unit) values (28, 38, 2, 'piece');
 insert into grocery_list_ingredients (gl_id, ingredient_id, quantity, unit) values (9, 13, 2, 'tsp');

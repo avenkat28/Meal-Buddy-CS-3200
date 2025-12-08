@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into ingredients (ingredient_id, ingredient_name, category, is_active, standardized_name, last_modified) values (1, 'carrot', 'Baking', false, 'carrot', '2025-04-19');
 insert into ingredients (ingredient_id, ingredient_name, category, is_active, standardized_name, last_modified) values (2, 'brussels sprouts', 'Meat', false, 'brussels sprouts', '2025-05-15');
 insert into ingredients (ingredient_id, ingredient_name, category, is_active, standardized_name, last_modified) values (3, 'chicken', 'Spice', true, 'chicken', '2025-03-30');

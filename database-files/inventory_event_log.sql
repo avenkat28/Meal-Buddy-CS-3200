@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into inventory_event_log (event_id, inventory_id, user_id, event_type, event_quantity, event_timestamp) values (1, 30, 28, 'ADJUSTED', 0.3, '2025-08-13');
 insert into inventory_event_log (event_id, inventory_id, user_id, event_type, event_quantity, event_timestamp) values (2, 19, 21, 'ADJUSTED', 1.6, '2025-01-05');
 insert into inventory_event_log (event_id, inventory_id, user_id, event_type, event_quantity, event_timestamp) values (3, 6, 19, 'ADDED', 4.8, '2025-04-27');

@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into daily_nutrition_summary (summary_id, user_id, summary_date, calories, protein_g, carbs_g, fat_g, sodium_mg) values (1, 4, '2025-07-23', 2972, 78.44, 223.11, 89.04, 3439.22);
 insert into daily_nutrition_summary (summary_id, user_id, summary_date, calories, protein_g, carbs_g, fat_g, sodium_mg) values (2, 3, '2025-08-12', 1619, 66.5, 392.35, 77.25, 3505.49);
 insert into daily_nutrition_summary (summary_id, user_id, summary_date, calories, protein_g, carbs_g, fat_g, sodium_mg) values (3, 8, '2025-03-22', 2441, 196.81, 157.15, 95.26, 3599.68);

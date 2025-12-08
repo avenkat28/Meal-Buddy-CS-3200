@@ -1,3 +1,6 @@
+USE MealBuddy;
+
+
 insert into consumed_meals (consumed_id, user_id, meal_id, date_consumed, serving_multiplier) values (1, 25, 31, '2025-08-31', 1.2);
 insert into consumed_meals (consumed_id, user_id, meal_id, date_consumed, serving_multiplier) values (2, 6, 17, '2025-05-03', 1.5);
 insert into consumed_meals (consumed_id, user_id, meal_id, date_consumed, serving_multiplier) values (3, 1, 25, '2025-09-27', 1.2);
