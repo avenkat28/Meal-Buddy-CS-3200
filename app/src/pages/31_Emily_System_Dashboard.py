@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-from app.src.modules.api_client import api
-from app.src.modules.nav import SideBarLinks
+from modules.api_client import api
+from modules.nav import SideBarLinks
 
 st.set_page_config(page_title="System Dashboard", page_icon="", layout="wide")
 SideBarLinks()

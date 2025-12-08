@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from app.src.modules.nav import SideBarLinks
+from modules.nav import SideBarLinks
 
 st.set_page_config(page_title="Nutrition Progress", page_icon="📊", layout="wide")
 SideBarLinks()
