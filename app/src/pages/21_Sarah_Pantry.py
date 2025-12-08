@@ -3,14 +3,14 @@ import pandas as pd
 from app.src.modules.api_client import api
 from app.src.modules.nav import SideBarLinks
 
-st.set_page_config(page_title="My Pantry", page_icon="📦", layout="wide")
+st.set_page_config(page_title="My Pantry", page_icon="", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("📦 My Pantry")
+st.title("My Pantry")
 st.markdown("Track what ingredients you have at home")
 
 user_id = st.session_state.get('user_id', 3)
@@ -33,7 +33,7 @@ st.markdown("---")
 filter_col1, filter_col2 = st.columns([2, 1])
 
 with filter_col1:
-    search = st.text_input("🔍 Search pantry", "")
+    search = st.text_input("Search pantry", "")
 
 with filter_col2:
     sort_by = st.selectbox("Sort by", ["Name", "Expiration Date", "Quantity"])
@@ -61,7 +61,7 @@ for item in pantry_items:
         with col1:
             checkbox_label = f"**{item['name']}**"
             if item['expiring']:
-                checkbox_label += " ⚠️ Expiring Soon"
+                checkbox_label += " Expiring Soon"
             st.checkbox(checkbox_label, value=item['owned'], key=f"pantry_{item['name']}")
         
         with col2:
@@ -69,12 +69,12 @@ for item in pantry_items:
         
         with col3:
             if item['used_in'] >= 3:
-                st.markdown("🟢")
+                st.markdown("High")
             else:
                 st.markdown(f"{item['used_in']}")
         
         with col4:
-            if st.button("➕", key=f"add_{item['name']}", help="Add to shopping list"):
+            if st.button("+", key=f"add_{item['name']}", help="Add to shopping list"):
                 st.success(f"Added {item['name']} to shopping list")
 
 st.markdown("---")
@@ -82,16 +82,16 @@ st.markdown("---")
 summary_col1, summary_col2 = st.columns(2)
 
 with summary_col1:
-    st.info("📊 **2 items owned • 6 items to buy**")
+    st.info("**2 items owned • 6 items to buy**")
     st.caption("Tap to see suggested meals")
 
 with summary_col2:
-    if st.button("🛒 View Grocery List", use_container_width=True):
+    if st.button("View Grocery List", use_container_width=True):
         st.info("Redirecting to grocery list...")
 
 st.markdown("---")
 
-st.markdown("### 💡 Suggested Meals Based on Your Pantry")
+st.markdown("### Suggested Meals Based on Your Pantry")
 
 suggestions = [
     {'meal': 'Garlic Chicken Stir-Fry', 'matching': '4/5 ingredients'},
@@ -104,7 +104,7 @@ for suggestion in suggestions:
     with col1:
         st.write(f"**{suggestion['meal']}**")
     with col2:
-        st.write(f"✅ {suggestion['matching']}")
+        st.write(f"{suggestion['matching']}")
     with col3:
         if st.button("View", key=f"view_{suggestion['meal']}"):
             st.info(f"Viewing recipe for {suggestion['meal']}")

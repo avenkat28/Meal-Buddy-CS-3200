@@ -3,7 +3,7 @@ import pandas as pd
 from app.src.modules.api_client import api
 from app.src.modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Meal Suggestions", page_icon="💡", layout="wide")
+st.set_page_config(page_title="Meal Suggestions", page_icon="", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
