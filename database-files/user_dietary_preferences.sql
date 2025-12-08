@@ -1,3 +1,5 @@
+USE MealBuddy;
+
 insert into user_dietary_preferences (user_id, preference_id) values (14, 5);
 insert into user_dietary_preferences (user_id, preference_id) values (19, 23);
 insert into user_dietary_preferences (user_id, preference_id) values (7, 10);
