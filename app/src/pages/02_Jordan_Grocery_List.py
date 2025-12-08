@@ -7,10 +7,10 @@ st.set_page_config(page_title="Grocery List", page_icon="🛒", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("🛒 Grocery List")
+st.title("Grocery List")
 st.markdown("Your shopping list for this week's meals")
 
 plan_id = 1
@@ -33,7 +33,7 @@ st.markdown("---")
 filter_col1, filter_col2 = st.columns([2, 1])
 
 with filter_col1:
-    search = st.text_input("🔍 Search ingredients", "")
+    search = st.text_input("Search ingredients", "")
 
 with filter_col2:
     show_owned = st.checkbox("Hide items I own", value=False)
@@ -94,25 +94,25 @@ for category, items in grocery_data.items():
                     owned = st.checkbox("Own", key=f"own_{category}_{item['name']}", value=item['owned'])
 
                 with col4:
-                    if st.button("📦", key=f"inventory_{category}_{item['name']}", help="Add to inventory"):
+                    if st.button("Add to Inventory", key=f"inventory_{category}_{item['name']}"):
                         st.success(f"Added {item['name']} to inventory")
 
     st.markdown("---")
 
-st.markdown("### 📤 Actions")
+st.markdown("### Actions")
 
 action_col1, action_col2, action_col3 = st.columns(3)
 
 with action_col1:
-    if st.button("📧 Email List", use_container_width=True):
+    if st.button("Email List", use_container_width=True):
         st.success("Grocery list sent to your email!")
 
 with action_col2:
-    if st.button("📄 Download PDF", use_container_width=True):
+    if st.button("Download PDF", use_container_width=True):
         st.info("PDF download feature coming soon")
 
 with action_col3:
-    if st.button("📱 Send to Phone", use_container_width=True):
+    if st.button("Send to Phone", use_container_width=True):
         st.success("List sent to your phone!")
 
-st.info("💡 **Tip:** You can save $12 by shopping at Market Basket instead of Whole Foods this week!")
+st.info("Tip: You can save $12 by shopping at Market Basket instead of Whole Foods this week!")

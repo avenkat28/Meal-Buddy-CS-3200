@@ -1,15 +1,16 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-from app.src.modules.api_client import api
+from app.src.modules.nav import SideBarLinks
 
 st.set_page_config(page_title="Nutrition Analytics", page_icon="📈", layout="wide")
+SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("📈 Nutrition Analytics")
+st.title("Nutrition Analytics")
 st.markdown("Deep dive into your dietary trends")
 
 user_id = st.session_state.get('user_id', 2)
@@ -26,7 +27,7 @@ with date_col2:
 
 st.markdown("---")
 
-st.markdown("### 📊 Macro Trends")
+st.markdown("### Macro Trends")
 
 dates = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 protein = [78, 85, 72, 81, 88, 82, 82]
@@ -45,7 +46,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### 🥗 Meal Type Distribution")
+st.markdown("### Meal Type Distribution")
 
 pie_col1, pie_col2 = st.columns(2)
 
@@ -67,7 +68,7 @@ with pie_col2:
 
 st.markdown("---")
 
-st.markdown("### 📋 Weekly Summary")
+st.markdown("### Weekly Summary")
 
 summary_data = {
     'Metric': ['Avg Calories', 'Avg Protein', 'Avg Carbs', 'Avg Fat', 'Avg Fiber'],

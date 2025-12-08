@@ -7,10 +7,10 @@ st.set_page_config(page_title="Weekly Meal Planner", page_icon="📅", layout="w
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("📅 Weekly Meal Planner")
+st.title("Weekly Meal Planner")
 st.markdown("Plan and manage your meals for the week")
 
 user_id = st.session_state.get('user_id', 1)
@@ -21,14 +21,14 @@ st.markdown("---")
 col1, col2, col3 = st.columns([1, 3, 1])
 
 with col1:
-    if st.button("⬅️ Previous Week"):
+    if st.button("< Previous Week"):
         st.info("Previous week functionality")
 
 with col2:
     st.markdown("### Week of November 11 - November 17, 2025")
 
 with col3:
-    if st.button("Next Week ➡️"):
+    if st.button("Next Week >"):
         st.info("Next week functionality")
 
 st.markdown("---")
@@ -84,25 +84,25 @@ for day in days:
             if day in mock_meals and meal_type in mock_meals[day]:
                 meal = mock_meals[day][meal_type]
                 st.markdown(f"**{meal_type}**")
-                st.write(f"🍽️ {meal['name']}")
-                st.write(f"🔥 {meal['calories']} cal")
+                st.write(f"{meal['name']}")
+                st.write(f"{meal['calories']} cal")
 
                 btn_col1, btn_col2 = st.columns(2)
                 with btn_col1:
-                    if st.button("👁️", key=f"view_{day}_{meal_type}"):
+                    if st.button("View", key=f"view_{day}_{meal_type}"):
                         st.info(f"Viewing details for {meal['name']}")
                 with btn_col2:
-                    if st.button("🗑️", key=f"delete_{day}_{meal_type}"):
+                    if st.button("Delete", key=f"delete_{day}_{meal_type}"):
                         st.success(f"Removed {meal['name']}!")
             else:
                 st.markdown(f"**{meal_type}**")
                 st.write("*No meal planned*")
-                if st.button("➕ Add", key=f"add_{day}_{meal_type}"):
+                if st.button("+ Add", key=f"add_{day}_{meal_type}"):
                     st.info(f"Adding meal for {day} {meal_type}")
 
     st.markdown("---")
 
-st.markdown("### 📊 Weekly Summary")
+st.markdown("### Weekly Summary")
 
 summary_col1, summary_col2, summary_col3 = st.columns(3)
 

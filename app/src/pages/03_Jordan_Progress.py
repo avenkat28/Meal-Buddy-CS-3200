@@ -8,17 +8,17 @@ st.set_page_config(page_title="Nutrition Progress", page_icon="📊", layout="wi
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("📊 Nutrition Progress Tracker")
+st.title("Nutrition Progress Tracker")
 st.markdown("Monitor your progress toward your health goals")
 
 user_id = st.session_state.get('user_id', 1)
 
 st.markdown("---")
 
-st.markdown("### 🎯 This Week's Goals")
+st.markdown("### This Week's Goals")
 
 goal_col1, goal_col2, goal_col3, goal_col4 = st.columns(4)
 
@@ -40,7 +40,7 @@ with goal_col4:
 
 st.markdown("---")
 
-st.markdown("### 📅 Daily Nutrition Breakdown")
+st.markdown("### Daily Nutrition Breakdown")
 
 dates = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 calories = [1520, 1680, 1450, 1590, 1720, 1610, 1450]
@@ -76,7 +76,7 @@ st.plotly_chart(fig_calories, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### 🥗 Macronutrient Breakdown (This Week)")
+st.markdown("### Macronutrient Breakdown (This Week)")
 
 macro_col1, macro_col2 = st.columns(2)
 
@@ -100,7 +100,7 @@ with macro_col2:
 
     st.write("**Protein:** 82g / day")
     st.progress(0.82)
-    st.caption("Target: 75g ✅")
+    st.caption("Target: 75g - On Track")
 
     st.write("**Carbs:** 185g / day")
     st.progress(0.93)
@@ -112,13 +112,13 @@ with macro_col2:
 
 st.markdown("---")
 
-st.markdown("### 📋 This Week's Summary")
+st.markdown("### This Week's Summary")
 
 achievements = [
-    "✅ Stayed under calorie goal 6/7 days",
-    "✅ Averaged 60g protein per meal",
-    "✅ 86% whole foods, 14% processed",
-    "⚠️ Only 2 servings of vegetables on Tuesday"
+    "✓ Stayed under calorie goal 6/7 days",
+    "✓ Averaged 60g protein per meal",
+    "✓ 86% whole foods, 14% processed",
+    "! Only 2 servings of vegetables on Tuesday"
 ]
 
 for achievement in achievements:
@@ -126,4 +126,4 @@ for achievement in achievements:
 
 st.markdown("---")
 
-st.success("🎉 **You're doing amazing! Keep it up!**")
+st.success("**You're doing amazing! Keep it up!**")

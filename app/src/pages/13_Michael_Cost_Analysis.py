@@ -1,15 +1,16 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from app.src.modules.api_client import api
+from app.src.modules.nav import SideBarLinks
 
 st.set_page_config(page_title="Cost Analysis", page_icon="💰", layout="wide")
+SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("💰 Meal Cost Analysis")
+st.title("Meal Cost Analysis")
 st.markdown("Track and optimize your food budget")
 
 st.markdown("---")
@@ -30,7 +31,7 @@ with col4:
 
 st.markdown("---")
 
-st.markdown("### 📊 Cost Breakdown by Meal")
+st.markdown("### Cost Breakdown by Meal")
 
 meal_costs = {
     'Meal': ['Grilled Chicken Salad', 'Salmon with Quinoa', 'Chicken Rice', 'Pasta Primavera', 'Shrimp Teriyaki'],
@@ -46,21 +47,21 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### 💡 Cost Optimization Tips")
+st.markdown("### Cost Optimization Tips")
 
 tip_col1, tip_col2 = st.columns(2)
 
 with tip_col1:
-    st.info("💰 **Savings Opportunity:** Buy chicken breast in bulk at Costco to save $4.50/week")
-    st.info("🥬 **Seasonal Tip:** Bell peppers are 30% cheaper at farmers markets this week")
+    st.info("**Savings Opportunity:** Buy chicken breast in bulk at Costco to save $4.50/week")
+    st.info("**Seasonal Tip:** Bell peppers are 30% cheaper at farmers markets this week")
 
 with tip_col2:
-    st.success("✅ **Well Done:** You're using olive oil efficiently across 4 meals")
-    st.success("✅ **Great Choice:** Quinoa provides best protein/$ ratio in your plan")
+    st.success("**Well Done:** You're using olive oil efficiently across 4 meals")
+    st.success("**Great Choice:** Quinoa provides best protein/$ ratio in your plan")
 
 st.markdown("---")
 
-st.markdown("### 📋 Detailed Cost Report")
+st.markdown("### Detailed Cost Report")
 
 detailed_costs = {
     'Ingredient': ['Chicken Breast', 'Salmon Fillet', 'Quinoa', 'Olive Oil', 'Bell Peppers'],
