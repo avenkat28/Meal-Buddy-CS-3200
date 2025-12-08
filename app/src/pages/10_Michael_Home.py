@@ -1,5 +1,5 @@
 import streamlit as st
-from app.src.modules.nav import SideBarLinks
+from modules.nav import SideBarLinks
 
 st.set_page_config(page_title="Michael's Analytics", page_icon="📊", layout="wide")
 SideBarLinks()
