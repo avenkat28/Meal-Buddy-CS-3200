@@ -39,7 +39,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="logo">🍽️</div>', unsafe_allow_html=True)
+st.markdown('<div class="logo">MB</div>', unsafe_allow_html=True)
 st.markdown('<h1 class="main-header">MealBuddy</h1>', unsafe_allow_html=True)
 st.markdown('<p class="sub-header">Your Personal Meal Planning Assistant</p>', unsafe_allow_html=True)
 
@@ -54,7 +54,7 @@ Plan your meals, manage your grocery list, and track your nutrition - all in one
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("### 🎓 Primary Users")
+    st.markdown("### Primary Users")
 
     with st.container():
         st.markdown("#### Jordan Thompson - College Junior")
@@ -78,8 +78,8 @@ with col1:
                 st.session_state['user_type'] = 'jordan'
                 st.session_state['user_name'] = jordan_selected
                 st.session_state['user_id'] = 1
-                st.success(f"✅ Logged in as {jordan_selected}")
-                st.info("👈 Use the sidebar to navigate to your features")
+                st.success(f"Logged in as {jordan_selected}")
+                st.info("Use the sidebar to navigate to your features")
             else:
                 st.error("Please select a user first")
 
@@ -107,13 +107,13 @@ with col1:
                 st.session_state['user_type'] = 'sarah'
                 st.session_state['user_name'] = sarah_selected
                 st.session_state['user_id'] = 3
-                st.success(f"✅ Logged in as {sarah_selected}")
-                st.info("👈 Use the sidebar to navigate to your features")
+                st.success(f"Logged in as {sarah_selected}")
+                st.info("Use the sidebar to navigate to your features")
             else:
                 st.error("Please select a user first")
 
 with col2:
-    st.markdown("### 📊 Advanced Users")
+    st.markdown("### Advanced Users")
 
     with st.container():
         st.markdown("#### Michael Johnson - Data Analyst")
@@ -137,8 +137,8 @@ with col2:
                 st.session_state['user_type'] = 'michael'
                 st.session_state['user_name'] = michael_selected
                 st.session_state['user_id'] = 2
-                st.success(f"✅ Logged in as {michael_selected}")
-                st.info("👈 Use the sidebar to navigate to your features")
+                st.success(f"Logged in as {michael_selected}")
+                st.info("Use the sidebar to navigate to your features")
             else:
                 st.error("Please select a user first")
 
@@ -165,37 +165,37 @@ with col2:
                 st.session_state['user_type'] = 'emily'
                 st.session_state['user_name'] = emily_selected
                 st.session_state['user_id'] = 99
-                st.success(f"✅ Logged in as {emily_selected}")
-                st.info("👈 Use the sidebar to navigate to your features")
+                st.success(f"Logged in as {emily_selected}")
+                st.info("Use the sidebar to navigate to your features")
             else:
                 st.error("Please select a user first")
 
 st.markdown("---")
 if 'user_type' in st.session_state:
-    st.success(f"🟢 Currently logged in as: **{st.session_state.get('user_name', 'Unknown User')}**")
-    st.info("Navigate using the sidebar on the left →")
+    st.success(f"Currently logged in as: **{st.session_state.get('user_name', 'Unknown User')}**")
+    st.info("Navigate using the sidebar on the left")
 else:
-    st.info("👆 Please select a user type and login above to continue")
+    st.info("Please select a user type and login above to continue")
 
 st.markdown("---")
-st.markdown("### ✨ Key Features")
+st.markdown("### Key Features")
 
 feature_col1, feature_col2, feature_col3, feature_col4 = st.columns(4)
 
 with feature_col1:
-    st.markdown("#### 📅 Meal Planning")
+    st.markdown("#### Meal Planning")
     st.write("Create weekly meal plans tailored to your dietary needs")
 
 with feature_col2:
-    st.markdown("#### 🛒 Grocery Lists")
+    st.markdown("#### Grocery Lists")
     st.write("Auto-generate shopping lists from your meal plans")
 
 with feature_col3:
-    st.markdown("#### 📊 Nutrition Tracking")
+    st.markdown("#### Nutrition Tracking")
     st.write("Monitor your daily nutrition and progress toward goals")
 
 with feature_col4:
-    st.markdown("#### 💰 Cost Analysis")
+    st.markdown("#### Cost Analysis")
     st.write("Track meal costs and optimize your food budget")
 
 st.markdown("---")
