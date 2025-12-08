@@ -1,155 +1,247 @@
 import streamlit as st
-import pandas as pd
-from modules.api_client import api
-from modules.nav import SideBarLinks
+from app.src.modules.nav import SideBarLinks
+from app.src.modules.api_client import api
 
 st.set_page_config(page_title="Recipe Browser", page_icon="📖", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("📖 Recipe Browser")
-st.markdown("Explore delicious meal ideas")
+st.title("Recipe Browser")
+st.markdown("Explore our collection of healthy recipes")
+
+user_id = st.session_state.get('user_id', 3)
 
 st.markdown("---")
 
-search_col1, search_col2 = st.columns([3, 1])
+# Search and filter controls
+search_col1, search_col2, search_col3 = st.columns([3, 1, 1])
 
 with search_col1:
-    search = st.text_input("🔍 Search recipes", placeholder="Try 'chicken', 'pasta', 'healthy'...")
+    search_query = st.text_input("Search recipes", placeholder="Try 'chicken', 'vegan', 'quick'...")
 
 with search_col2:
-    category = st.selectbox("Category", ["All", "Breakfast", "Lunch", "Dinner", "Snacks"])
+    sort_by = st.selectbox("Sort By", ["Relevance", "Calories", "Prep Time", "Rating"])
+
+with search_col3:
+    view_mode = st.radio("View", ["Grid", "List"], horizontal=True)
 
 st.markdown("---")
 
-st.markdown("### 🔥 Popular This Week")
+# Filters in sidebar
+with st.sidebar:
+    st.markdown("### Filters")
 
-popular_recipes = [
-    {
-        'name': 'Shrimp Teriyaki',
-        'difficulty': 'Medium',
-        'time': 30,
-        'calories': 550,
-        'rating': 4.8,
-        'image': '🍤'
-    },
-    {
-        'name': 'Grilled Chicken Salad',
-        'difficulty': 'Easy',
-        'time': 20,
-        'calories': 450,
-        'rating': 4.6,
-        'image': '🥗'
-    },
-    {
-        'name': 'Salmon with Quinoa',
-        'difficulty': 'Medium',
-        'time': 35,
-        'calories': 520,
-        'rating': 4.9,
-        'image': '🐟'
-    }
-]
+    meal_type_filter = st.multiselect(
+        "Meal Type",
+        ["Breakfast", "Lunch", "Dinner", "Snack"]
+    )
 
-cols = st.columns(3)
+    dietary_filter = st.multiselect(
+        "Dietary Preferences",
+        ["Vegetarian", "Vegan", "Gluten-Free", "Dairy-Free", "High-Protein"]
+    )
 
-for idx, recipe in enumerate(popular_recipes):
-    with cols[idx]:
-        st.markdown(f"<div style='text-align: center; font-size: 4rem;'>{recipe['image']}</div>", unsafe_allow_html=True)
-        st.markdown(f"### {recipe['name']}")
-        st.write(f"⭐ {recipe['rating']} | ⏰ {recipe['time']} min | 🔥 {recipe['calories']} cal")
-        st.write(f"**Difficulty:** {recipe['difficulty']}")
-        if st.button("View Details", key=f"popular_{recipe['name']}"):
-            st.session_state['selected_recipe'] = recipe['name']
+    calorie_range = st.slider("Calorie Range", 0, 1000, (0, 1000))
 
-st.markdown("---")
+    prep_time_max = st.slider("Max Prep Time (min)", 10, 120, 120)
 
-st.markdown("### 📚 All Recipes")
+    if st.button("Clear Filters"):
+        st.rerun()
 
-all_recipes = [
-    {'name': 'Chicken Fried Rice', 'difficulty': 'Easy', 'time': 25, 'calories': 380, 'category': 'Dinner'},
-    {'name': 'Greek Yogurt Parfait', 'difficulty': 'Easy', 'time': 5, 'calories': 320, 'category': 'Breakfast'},
-    {'name': 'Turkey Wrap', 'difficulty': 'Easy', 'time': 10, 'calories': 380, 'category': 'Lunch'},
-    {'name': 'Pasta Primavera', 'difficulty': 'Medium', 'time': 30, 'calories': 490, 'category': 'Dinner'},
-    {'name': 'Smoothie Bowl', 'difficulty': 'Easy', 'time': 10, 'calories': 290, 'category': 'Breakfast'},
-    {'name': 'BBQ Chicken', 'difficulty': 'Medium', 'time': 45, 'calories': 560, 'category': 'Dinner'},
-    {'name': 'Caesar Salad', 'difficulty': 'Easy', 'time': 15, 'calories': 390, 'category': 'Lunch'},
-    {'name': 'Avocado Toast', 'difficulty': 'Easy', 'time': 5, 'calories': 340, 'category': 'Breakfast'}
-]
+# Fetch recipes from API
+recipes = api.get("/meals/search", params={
+    "query": search_query,
+    "meal_types": meal_type_filter,
+    "dietary": dietary_filter,
+    "min_calories": calorie_range[0],
+    "max_calories": calorie_range[1],
+    "max_prep_time": prep_time_max,
+    "sort_by": sort_by.lower().replace(" ", "_")
+})
 
-for recipe in all_recipes:
-    if search.lower() in recipe['name'].lower() or search == "":
-        if category == "All" or recipe['category'] == category:
-            col1, col2, col3, col4, col5 = st.columns([3, 1, 1, 1, 1])
-            
-            with col1:
-                st.write(f"**{recipe['name']}**")
-                st.caption(recipe['category'])
-            
-            with col2:
-                if recipe['difficulty'] == 'Easy':
-                    st.success(recipe['difficulty'])
-                else:
-                    st.warning(recipe['difficulty'])
-            
-            with col3:
-                st.write(f"⏰ {recipe['time']} min")
-            
-            with col4:
-                st.write(f"🔥 {recipe['calories']} cal")
-            
-            with col5:
-                if st.button("View", key=f"recipe_{recipe['name']}"):
-                    st.session_state['selected_recipe'] = recipe['name']
-            
-            st.markdown("---")
+if recipes and len(recipes) > 0:
+    if view_mode == "Grid":
+        # Grid view - 3 columns
+        for i in range(0, len(recipes), 3):
+            cols = st.columns(3)
+            for j, col in enumerate(cols):
+                if i + j < len(recipes):
+                    recipe = recipes[i + j]
+                    with col:
+                        st.markdown(f"#### {recipe.get('meal_name', 'Unknown')}")
 
-if 'selected_recipe' in st.session_state and st.session_state['selected_recipe']:
-    st.markdown("### 📋 Recipe Details")
-    
-    recipe_name = st.session_state['selected_recipe']
-    
-    st.markdown(f"## {recipe_name}")
-    
-    detail_col1, detail_col2 = st.columns([2, 1])
-    
-    with detail_col1:
-        st.markdown("#### Ingredients")
-        ingredients = [
-            "12 oz Large Shrimp",
-            "1/4 cup Teriyaki Sauce",
-            "2 cups White Rice",
-            "1 cup Broccoli Florets",
-            "2 tbsp Sesame Oil",
-            "1 tsp Sesame Seeds"
-        ]
-        for ingredient in ingredients:
-            st.write(f"• {ingredient}")
-        
-        st.markdown("#### Recipe Steps")
-        steps = [
-            "Cook rice according to package directions and set aside",
-            "Sauté shrimp in sesame oil until pink",
-            "Add broccoli and teriyaki sauce, cook for 5 minutes",
-            "Serve over rice and garnish with sesame seeds"
-        ]
-        for idx, step in enumerate(steps, 1):
-            st.write(f"{idx}. {step}")
-    
-    with detail_col2:
-        st.markdown("#### Nutritional Facts")
-        st.metric("Calories", "550")
-        st.metric("Protein", "32g")
-        st.metric("Carbs", "48g")
-        st.metric("Fat", "22g")
-        
+                        # Recipe image placeholder
+                        st.info("🍽️ Recipe Image")
+
+                        recipe_col1, recipe_col2 = st.columns(2)
+                        with recipe_col1:
+                            st.caption(f"⏱️ {recipe.get('prep_time', 0)} min")
+                            st.caption(f"🔥 {recipe.get('calories', 0)} cal")
+                        with recipe_col2:
+                            protein = recipe.get('protein', 0)
+                            st.caption(f"💪 {protein}g protein")
+                            difficulty = recipe.get('difficulty', 'Medium')
+                            st.caption(f"📊 {difficulty}")
+
+                        if st.button("View Details", key=f"view_{recipe.get('meal_id')}", use_container_width=True):
+                            st.session_state['selected_meal_id'] = recipe.get('meal_id')
+                            st.rerun()
+    else:
+        # List view
+        for recipe in recipes:
+            with st.container():
+                col1, col2, col3 = st.columns([4, 2, 1])
+
+                with col1:
+                    st.markdown(f"### {recipe.get('meal_name', 'Unknown')}")
+                    description = recipe.get('description', 'Delicious and nutritious meal')
+                    st.write(description)
+
+                    tags = recipe.get('tags', [])
+                    if tags:
+                        tag_str = " ".join([f"#{tag}" for tag in tags])
+                        st.caption(tag_str)
+                    else:
+                        st.caption("#healthy #easy #quick")
+
+                with col2:
+                    st.metric("Calories", recipe.get('calories', 0))
+                    st.metric("Prep Time", f"{recipe.get('prep_time', 0)} min")
+                    protein = recipe.get('protein', 0)
+                    st.metric("Protein", f"{protein}g")
+
+                with col3:
+                    st.write("")
+                    st.write("")
+                    if st.button("View Recipe", key=f"view_list_{recipe.get('meal_id')}"):
+                        st.session_state['selected_meal_id'] = recipe.get('meal_id')
+                        st.rerun()
+
+                st.markdown("---")
+else:
+    # Fallback recipes
+    st.markdown("### Featured Recipes")
+
+    if view_mode == "Grid":
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.markdown("#### Grilled Chicken Salad")
+            st.info("🍽️ Recipe Image")
+            recipe_col1, recipe_col2 = st.columns(2)
+            with recipe_col1:
+                st.caption("⏱️ 25 min")
+                st.caption("🔥 450 cal")
+            with recipe_col2:
+                st.caption("💪 38g protein")
+                st.caption("📊 Easy")
+            if st.button("View Details", key="view_1", use_container_width=True):
+                st.info("Recipe details")
+
+        with col2:
+            st.markdown("#### Salmon with Quinoa")
+            st.info("🍽️ Recipe Image")
+            recipe_col1, recipe_col2 = st.columns(2)
+            with recipe_col1:
+                st.caption("⏱️ 35 min")
+                st.caption("🔥 520 cal")
+            with recipe_col2:
+                st.caption("💪 42g protein")
+                st.caption("📊 Medium")
+            if st.button("View Details", key="view_2", use_container_width=True):
+                st.info("Recipe details")
+
+        with col3:
+            st.markdown("#### Veggie Stir Fry")
+            st.info("🍽️ Recipe Image")
+            recipe_col1, recipe_col2 = st.columns(2)
+            with recipe_col1:
+                st.caption("⏱️ 20 min")
+                st.caption("🔥 380 cal")
+            with recipe_col2:
+                st.caption("💪 15g protein")
+                st.caption("📊 Easy")
+            if st.button("View Details", key="view_3", use_container_width=True):
+                st.info("Recipe details")
+    else:
+        # List view fallback
+        st.markdown("### Grilled Chicken Salad")
+        col1, col2, col3 = st.columns([4, 2, 1])
+        with col1:
+            st.write("Fresh and healthy salad with grilled chicken, mixed greens, and balsamic vinaigrette")
+            st.caption("#healthy #protein #salad")
+        with col2:
+            st.metric("Calories", "450")
+            st.metric("Prep Time", "25 min")
+            st.metric("Protein", "38g")
+        with col3:
+            st.write("")
+            st.write("")
+            if st.button("View Recipe", key="view_list_1"):
+                st.info("Recipe details")
         st.markdown("---")
-        
-        if st.button("➕ Add to Meal Plan", use_container_width=True):
-            st.success(f"Added {recipe_name} to your meal plan!")
-        
-        if st.button("🛒 Add Ingredients to List", use_container_width=True):
-            st.success("Ingredients added to grocery list!")
+
+# Show recipe details if one is selected
+if 'selected_meal_id' in st.session_state and st.session_state['selected_meal_id']:
+    st.markdown("---")
+    st.markdown("### Recipe Details")
+
+    meal_id = st.session_state['selected_meal_id']
+
+    # Fetch detailed recipe
+    recipe_details = api.get(f"/meals/{meal_id}")
+
+    if recipe_details:
+        st.markdown(f"## {recipe_details.get('meal_name', 'Unknown')}")
+
+        detail_col1, detail_col2, detail_col3, detail_col4 = st.columns(4)
+
+        with detail_col1:
+            st.metric("Calories", recipe_details.get('calories', 0))
+        with detail_col2:
+            st.metric("Protein", f"{recipe_details.get('protein', 0)}g")
+        with detail_col3:
+            st.metric("Prep Time", f"{recipe_details.get('prep_time', 0)} min")
+        with detail_col4:
+            difficulty = recipe_details.get('difficulty', 'Medium')
+            st.metric("Difficulty", difficulty)
+
+        st.markdown("#### Description")
+        description = recipe_details.get('description', 'Delicious meal')
+        st.write(description)
+
+        st.markdown("#### Ingredients")
+        ingredients = recipe_details.get('ingredients', [])
+        if ingredients:
+            for ing in ingredients:
+                quantity = ing.get('quantity', '')
+                unit = ing.get('unit', '')
+                name = ing.get('ingredient_name', '')
+                st.write(f"• {quantity} {unit} {name}")
+        else:
+            st.write("• 1 lb Chicken breast")
+            st.write("• 4 cups Mixed greens")
+            st.write("• 1 cup Cherry tomatoes")
+            st.write("• 2 tbsp Olive oil")
+            st.write("• 2 tbsp Balsamic vinegar")
+
+        st.markdown("#### Instructions")
+        instructions = recipe_details.get('instructions', '')
+        if instructions:
+            st.write(instructions)
+        else:
+            st.write("1. Season and grill chicken breast until fully cooked")
+            st.write("2. Slice chicken into strips")
+            st.write("3. Toss greens with tomatoes")
+            st.write("4. Add chicken on top")
+            st.write("5. Drizzle with oil and vinegar")
+
+        if st.button("Add to Meal Plan"):
+            st.success(f"Added {recipe_details.get('meal_name')} to your meal plan!")
+
+        if st.button("Close Details"):
+            st.session_state['selected_meal_id'] = None
+            st.rerun()
