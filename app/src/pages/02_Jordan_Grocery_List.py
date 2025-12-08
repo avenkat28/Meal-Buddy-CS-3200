@@ -3,7 +3,7 @@ import pandas as pd
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Grocery List", page_icon="🛒", layout="wide")
+st.set_page_config(page_title="Grocery List", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:

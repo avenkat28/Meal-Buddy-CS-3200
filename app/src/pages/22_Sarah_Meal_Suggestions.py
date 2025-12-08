@@ -3,7 +3,7 @@ import pandas as pd
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Meal Suggestions", page_icon="", layout="wide")
+st.set_page_config(page_title="Meal Suggestions", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -17,7 +17,7 @@ user_id = st.session_state.get('user_id', 3)
 
 st.markdown("---")
 
-st.markdown("### Filter Suggestions")
+st.markdown("### Suggestions")
 
 filter_col1, filter_col2, filter_col3 = st.columns(3)
 
@@ -32,7 +32,7 @@ with filter_col3:
 
 st.markdown("---")
 
-st.markdown("### Recommended for You")
+st.markdown("### for You")
 
 meals = [
     {
@@ -124,6 +124,6 @@ for meal in meals:
         
         st.markdown("---")
 
-st.markdown("### Cost-Effective Options")
+st.markdown("### Options")
 
 st.info("**Save $8.50 this week!** Try 'Chicken Fried Rice' and 'Vegetable Stir-Fry' - you already have most ingredients!")

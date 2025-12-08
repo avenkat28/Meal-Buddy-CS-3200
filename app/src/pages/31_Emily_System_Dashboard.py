@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="System Dashboard", page_icon="", layout="wide")
+st.set_page_config(page_title="System Dashboard", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -16,7 +16,7 @@ st.markdown("Monitor MealBuddy system performance")
 
 st.markdown("---")
 
-st.markdown("### System Status")
+st.markdown("### Status")
 
 status_col1, status_col2, status_col3, status_col4 = st.columns(4)
 
@@ -38,7 +38,7 @@ with status_col4:
 
 st.markdown("---")
 
-st.markdown("### API Performance (Last 24 Hours)")
+st.markdown("### Performance (Last 24 Hours)")
 
 hours = list(range(24))
 api_calls = [340, 280, 210, 190, 170, 150, 180, 290, 420, 520, 610, 670, 720, 690, 650, 720, 810, 920, 880, 760, 640,
@@ -67,7 +67,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### Database Activity")
+st.markdown("### Activity")
 
 db_col1, db_col2, db_col3, db_col4 = st.columns(4)
 
@@ -85,7 +85,7 @@ with db_col4:
 
 st.markdown("---")
 
-st.markdown("### Recent Alerts")
+st.markdown("### Alerts")
 
 alerts = [
     {'time': '2 min ago', 'severity': 'Info', 'message': 'Database backup completed successfully'},

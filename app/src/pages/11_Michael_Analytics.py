@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Nutrition Analytics", page_icon="📈", layout="wide")
+st.set_page_config(page_title="Nutrition Analytics", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -27,7 +27,7 @@ with date_col2:
 
 st.markdown("---")
 
-st.markdown("### Macro Trends")
+st.markdown("### Trends")
 
 dates = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 protein = [78, 85, 72, 81, 88, 82, 82]
@@ -46,7 +46,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### Meal Type Distribution")
+st.markdown("### Type Distribution")
 
 pie_col1, pie_col2 = st.columns(2)
 
@@ -59,7 +59,7 @@ with pie_col1:
     st.plotly_chart(fig_pie, use_container_width=True)
 
 with pie_col2:
-    st.markdown("#### Key Stats")
+    st.markdown("#### Stats")
     st.write("**Total Meals Analyzed:** 30")
     st.write("**Plant-Based:** 19 meals (64%)")
     st.write("**Meat-Based:** 11 meals (36%)")
@@ -68,7 +68,7 @@ with pie_col2:
 
 st.markdown("---")
 
-st.markdown("### Weekly Summary")
+st.markdown("### Summary")
 
 summary_data = {
     'Metric': ['Avg Calories', 'Avg Protein', 'Avg Carbs', 'Avg Fat', 'Avg Fiber'],

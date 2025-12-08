@@ -1,7 +1,7 @@
 import streamlit as st
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Jordan's Dashboard", page_icon="🎓", layout="wide")
+st.set_page_config(page_title="Jordan's Dashboard", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state or st.session_state['user_type'] != 'jordan':
@@ -9,7 +9,7 @@ if 'user_type' not in st.session_state or st.session_state['user_type'] != 'jord
     st.stop()
 
 st.title("Welcome, " + st.session_state.get('user_name', 'Jordan'))
-st.markdown("### Your Meal Planning Dashboard")
+st.markdown("### Meal Planning Dashboard")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -27,28 +27,28 @@ with col4:
 
 st.markdown("---")
 
-st.markdown("### Quick Actions")
+st.markdown("### Actions")
 
 action_col1, action_col2, action_col3 = st.columns(3)
 
 with action_col1:
     if st.button("View Weekly Meal Plan", use_container_width=True):
-        st.switch_page("app/src/pages/01_Jordan_Weekly_Planner.py")
+        st.switch_page("pages/01_Jordan_Weekly_Planner.py")
     st.write("See and manage your meals for the week")
 
 with action_col2:
     if st.button("View Grocery List", use_container_width=True):
-        st.switch_page("app/src/pages/02_Jordan_Grocery_List.py")
+        st.switch_page("pages/02_Jordan_Grocery_List.py")
     st.write("Check what you need to buy")
 
 with action_col3:
     if st.button("View Progress", use_container_width=True):
-        st.switch_page("app/src/pages/03_Jordan_Progress.py")
+        st.switch_page("pages/03_Jordan_Progress.py")
     st.write("Track your nutrition goals")
 
 st.markdown("---")
 
-st.markdown("### Today's Meals")
+st.markdown("### Meals")
 
 today_col1, today_col2, today_col3 = st.columns(3)
 

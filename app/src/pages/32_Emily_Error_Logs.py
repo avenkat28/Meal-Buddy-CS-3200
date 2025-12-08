@@ -3,7 +3,7 @@ import pandas as pd
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Error Logs", page_icon="", layout="wide")
+st.set_page_config(page_title="Error Logs", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -31,7 +31,7 @@ with filter_col4:
 
 st.markdown("---")
 
-st.markdown("### Recent Errors (Last 24 hours)")
+st.markdown("### Errors (Last 24 hours)")
 
 col1, col2, col3 = st.columns(3)
 

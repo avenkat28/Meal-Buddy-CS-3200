@@ -3,7 +3,7 @@ import pandas as pd
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Data Cleanup", page_icon="", layout="wide")
+st.set_page_config(page_title="Data Cleanup", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -15,7 +15,7 @@ st.markdown("Maintain database quality and fix data issues")
 
 st.markdown("---")
 
-st.markdown("### Data Quality Issues")
+st.markdown("### Quality Issues")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -33,7 +33,7 @@ with col4:
 
 st.markdown("---")
 
-st.markdown("### Duplicate Ingredients")
+st.markdown("### Ingredients")
 
 duplicates = [
     {'ingredient': 'Tomato', 'count': 3, 'variations': ['Tomato', 'tomato', 'Tomatoes']},
@@ -58,7 +58,7 @@ for dup in duplicates:
 
 st.markdown("---")
 
-st.markdown("### Unmatched Grocery Items")
+st.markdown("### Grocery Items")
 
 st.info("These ingredients don't have standardized names for grocery price matching")
 
@@ -84,7 +84,7 @@ for item in unmatched:
 
 st.markdown("---")
 
-st.markdown("### Orphaned Records")
+st.markdown("### Records")
 
 st.warning("These records reference deleted items")
 
@@ -112,7 +112,7 @@ for record in orphaned:
 
 st.markdown("---")
 
-st.markdown("### Maintenance Actions")
+st.markdown("### Actions")
 
 action_col1, action_col2, action_col3 = st.columns(3)
 

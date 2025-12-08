@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Nutrition Progress", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Nutrition Progress", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -18,7 +18,7 @@ user_id = st.session_state.get('user_id', 1)
 
 st.markdown("---")
 
-st.markdown("### This Week's Goals")
+st.markdown("### Week's Goals")
 
 goal_col1, goal_col2, goal_col3, goal_col4 = st.columns(4)
 
@@ -40,7 +40,7 @@ with goal_col4:
 
 st.markdown("---")
 
-st.markdown("### Daily Nutrition Breakdown")
+st.markdown("### Nutrition Breakdown")
 
 dates = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 calories = [1520, 1680, 1450, 1590, 1720, 1610, 1450]
@@ -76,7 +76,7 @@ st.plotly_chart(fig_calories, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### Macronutrient Breakdown (This Week)")
+st.markdown("### Breakdown (This Week)")
 
 macro_col1, macro_col2 = st.columns(2)
 
@@ -96,7 +96,7 @@ with macro_col1:
     st.plotly_chart(fig_pie, use_container_width=True)
 
 with macro_col2:
-    st.markdown("#### Weekly Averages")
+    st.markdown("#### Averages")
 
     st.write("**Protein:** 82g / day")
     st.progress(0.82)
@@ -112,7 +112,7 @@ with macro_col2:
 
 st.markdown("---")
 
-st.markdown("### This Week's Summary")
+st.markdown("### Week's Summary")
 
 achievements = [
     "✓ Stayed under calorie goal 6/7 days",

@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Cost Analysis", page_icon="💰", layout="wide")
+st.set_page_config(page_title="Cost Analysis", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -31,7 +31,7 @@ with col4:
 
 st.markdown("---")
 
-st.markdown("### Cost Breakdown by Meal")
+st.markdown("### Breakdown by Meal")
 
 meal_costs = {
     'Meal': ['Grilled Chicken Salad', 'Salmon with Quinoa', 'Chicken Rice', 'Pasta Primavera', 'Shrimp Teriyaki'],
@@ -47,7 +47,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### Cost Optimization Tips")
+st.markdown("### Optimization Tips")
 
 tip_col1, tip_col2 = st.columns(2)
 
@@ -61,7 +61,7 @@ with tip_col2:
 
 st.markdown("---")
 
-st.markdown("### Detailed Cost Report")
+st.markdown("### Cost Report")
 
 detailed_costs = {
     'Ingredient': ['Chicken Breast', 'Salmon Fillet', 'Quinoa', 'Olive Oil', 'Bell Peppers'],

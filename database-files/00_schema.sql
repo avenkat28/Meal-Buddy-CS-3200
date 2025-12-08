@@ -40,10 +40,16 @@ CREATE TABLE user_goals (
 -- Meals + Ingredients
 
 CREATE TABLE meals (
-   meal_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-   meal_name VARCHAR(255) NOT NULL,
-   difficulty ENUM('easy','medium','hard'),
-   cooking_time_minutes INT
+meal_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+meal_name VARCHAR(255) NOT NULL,
+difficulty ENUM('easy','medium','hard'),
+cooking_time_minutes INT,
+   calories INT,
+   protein_g DECIMAL(10,2),
+   carbs_g DECIMAL(10,2),
+   fat_g DECIMAL(10,2),
+   sodium_mg DECIMAL(10,2),
+   recipe_steps TEXT
 );
 
 CREATE TABLE ingredients (
@@ -68,12 +74,13 @@ CREATE TABLE meal_ingredients (
 -- Meal Planning
 
 CREATE TABLE meal_plans (
-   plan_id BIGINT PRIMARY KEY AUTO_INCREMENT,
-   user_id BIGINT NOT NULL,
-   week_start DATE NOT NULL,
-   week_end DATE NOT NULL,
-   status ENUM('draft','complete','corrupted','failed') DEFAULT 'draft',
-   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+plan_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+user_id BIGINT NOT NULL,
+week_start DATE NOT NULL,
+week_end DATE NOT NULL,
+status ENUM('draft','complete','corrupted','failed') DEFAULT 'draft',
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE planned_meals (

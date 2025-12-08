@@ -3,7 +3,7 @@ import pandas as pd
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="My Pantry", page_icon="", layout="wide")
+st.set_page_config(page_title="My Pantry", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -51,7 +51,7 @@ pantry_items = [
     {'name': 'Tomatoes', 'quantity': '4 pieces', 'owned': True, 'used_in': 3, 'expiring': True}
 ]
 
-st.markdown("### My Pantry Items")
+st.markdown("### Pantry Items")
 st.caption("Check off items you have. Green badge = used in multiple meals this week")
 
 for item in pantry_items:
@@ -91,7 +91,7 @@ with summary_col2:
 
 st.markdown("---")
 
-st.markdown("### Suggested Meals Based on Your Pantry")
+st.markdown("### Meals Based on Your Pantry")
 
 suggestions = [
     {'meal': 'Garlic Chicken Stir-Fry', 'matching': '4/5 ingredients'},

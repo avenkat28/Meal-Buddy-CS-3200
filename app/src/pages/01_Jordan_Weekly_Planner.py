@@ -3,7 +3,7 @@ import pandas as pd
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Weekly Meal Planner", page_icon="📅", layout="wide")
+st.set_page_config(page_title="Weekly Meal Planner", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -25,7 +25,7 @@ with col1:
         st.info("Previous week functionality")
 
 with col2:
-    st.markdown("### Week of November 11 - November 17, 2025")
+    st.markdown("### of November 11 - November 17, 2025")
 
 with col3:
     if st.button("Next Week >"):
@@ -102,7 +102,7 @@ for day in days:
 
     st.markdown("---")
 
-st.markdown("### Weekly Summary")
+st.markdown("### Summary")
 
 summary_col1, summary_col2, summary_col3 = st.columns(3)
 

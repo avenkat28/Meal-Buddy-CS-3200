@@ -3,7 +3,7 @@ import pandas as pd
 from modules.api_client import api
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Recipe Browser", page_icon="📖", layout="wide")
+st.set_page_config(page_title="Recipe Browser", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
@@ -25,7 +25,7 @@ with search_col2:
 
 st.markdown("---")
 
-st.markdown("### 🔥 Popular This Week")
+st.markdown("### Popular This Week")
 
 popular_recipes = [
     {
@@ -67,7 +67,7 @@ for idx, recipe in enumerate(popular_recipes):
 
 st.markdown("---")
 
-st.markdown("### 📚 All Recipes")
+st.markdown("### All Recipes")
 
 all_recipes = [
     {'name': 'Chicken Fried Rice', 'difficulty': 'Easy', 'time': 25, 'calories': 380, 'category': 'Dinner'},
@@ -108,7 +108,7 @@ for recipe in all_recipes:
             st.markdown("---")
 
 if 'selected_recipe' in st.session_state and st.session_state['selected_recipe']:
-    st.markdown("### 📋 Recipe Details")
+    st.markdown("### Recipe Details")
     
     recipe_name = st.session_state['selected_recipe']
     
@@ -129,7 +129,7 @@ if 'selected_recipe' in st.session_state and st.session_state['selected_recipe']
         for ingredient in ingredients:
             st.write(f"• {ingredient}")
         
-        st.markdown("#### Recipe Steps")
+        st.markdown("#### Steps")
         steps = [
             "Cook rice according to package directions and set aside",
             "Sauté shrimp in sesame oil until pink",
@@ -140,7 +140,7 @@ if 'selected_recipe' in st.session_state and st.session_state['selected_recipe']
             st.write(f"{idx}. {step}")
     
     with detail_col2:
-        st.markdown("#### Nutritional Facts")
+        st.markdown("#### Facts")
         st.metric("Calories", "550")
         st.metric("Protein", "32g")
         st.metric("Carbs", "48g")

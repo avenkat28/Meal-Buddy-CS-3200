@@ -1,7 +1,7 @@
 import streamlit as st
 from modules.nav import SideBarLinks
 
-st.set_page_config(page_title="Admin Dashboard", page_icon="⚙️", layout="wide")
+st.set_page_config(page_title="Admin Dashboard", page_icon="MB", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state or st.session_state['user_type'] != 'emily':
@@ -9,7 +9,7 @@ if 'user_type' not in st.session_state or st.session_state['user_type'] != 'emil
     st.stop()
 
 st.title("Welcome, " + st.session_state.get('user_name', 'Emily'))
-st.markdown("### System Administration Dashboard")
+st.markdown("### Administration Dashboard")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -27,21 +27,21 @@ with col4:
 
 st.markdown("---")
 
-st.markdown("### Quick Actions")
+st.markdown("### Actions")
 
 action_col1, action_col2, action_col3 = st.columns(3)
 
 with action_col1:
     if st.button("System Dashboard", use_container_width=True):
-        st.switch_page("app/src/pages/31_Emily_System_Dashboard.py")
+        st.switch_page("pages/31_Emily_System_Dashboard.py")
     st.write("Monitor system health")
 
 with action_col2:
     if st.button("View Error Logs", use_container_width=True):
-        st.switch_page("app/src/pages/32_Emily_Error_Logs.py")
+        st.switch_page("pages/32_Emily_Error_Logs.py")
     st.write("Check recent errors")
 
 with action_col3:
     if st.button("Data Cleanup", use_container_width=True):
-        st.switch_page("app/src/pages/33_Emily_Data_Cleanup.py")
+        st.switch_page("pages/33_Emily_Data_Cleanup.py")
     st.write("Maintain database quality")

@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 
 st.set_page_config(
     page_title="MealBuddy - Meal Planning Made Easy",
-    page_icon="🍽️",
+    page_icon="MB",
     layout="wide"
 )
 
