@@ -7,10 +7,10 @@ st.set_page_config(page_title="Error Logs", page_icon="🚨", layout="wide")
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("🚨 Error Logs")
+st.title("Error Logs")
 st.markdown("Monitor and resolve system errors")
 
 st.markdown("---")
@@ -31,7 +31,7 @@ with filter_col4:
 
 st.markdown("---")
 
-st.markdown("### 📋 Recent Errors (Last 24 hours)")
+st.markdown("### Recent Errors (Last 24 hours)")
 
 col1, col2, col3 = st.columns(3)
 
@@ -109,25 +109,25 @@ for error in errors:
         
         with col5:
             if error['resolved']:
-                st.success("✅ Fixed")
+                st.success("Fixed")
             else:
                 if st.button("Fix", key=f"fix_{error['time']}"):
                     st.success("Marked as resolved!")
         
         st.markdown("---")
 
-st.markdown("### 📤 Actions")
+st.markdown("### Actions")
 
 action_col1, action_col2, action_col3 = st.columns(3)
 
 with action_col1:
-    if st.button("📥 Export CSV", use_container_width=True):
+    if st.button("Export CSV", use_container_width=True):
         st.success("Error log exported!")
 
 with action_col2:
-    if st.button("✅ Clear Resolved", use_container_width=True):
+    if st.button("Clear Resolved", use_container_width=True):
         st.success("Cleared 5 resolved errors")
 
 with action_col3:
-    if st.button("🔄 Refresh", use_container_width=True):
+    if st.button("Refresh", use_container_width=True):
         st.success("Logs refreshed!")

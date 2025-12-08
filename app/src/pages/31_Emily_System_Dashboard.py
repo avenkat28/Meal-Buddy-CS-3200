@@ -8,24 +8,24 @@ st.set_page_config(page_title="System Dashboard", page_icon="📊", layout="wide
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("📊 System Health Dashboard")
+st.title("System Health Dashboard")
 st.markdown("Monitor MealBuddy system performance")
 
 st.markdown("---")
 
-st.markdown("### 🔄 System Status")
+st.markdown("### System Status")
 
 status_col1, status_col2, status_col3, status_col4 = st.columns(4)
 
 with status_col1:
-    st.metric("API Status", "✅ Operational")
+    st.metric("API Status", "Operational")
     st.caption("Avg Response: 127ms")
 
 with status_col2:
-    st.metric("Database", "✅ Healthy")
+    st.metric("Database", "Healthy")
     st.caption("Connections: 24/100")
 
 with status_col3:
@@ -38,7 +38,7 @@ with status_col4:
 
 st.markdown("---")
 
-st.markdown("### 📈 API Performance (Last 24 Hours)")
+st.markdown("### API Performance (Last 24 Hours)")
 
 hours = list(range(24))
 api_calls = [340, 280, 210, 190, 170, 150, 180, 290, 420, 520, 610, 670, 720, 690, 650, 720, 810, 920, 880, 760, 640,
@@ -67,7 +67,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 
-st.markdown("### 📊 Database Activity")
+st.markdown("### Database Activity")
 
 db_col1, db_col2, db_col3, db_col4 = st.columns(4)
 
@@ -85,7 +85,7 @@ with db_col4:
 
 st.markdown("---")
 
-st.markdown("### ⚠️ Recent Alerts")
+st.markdown("### Recent Alerts")
 
 alerts = [
     {'time': '2 min ago', 'severity': 'Info', 'message': 'Database backup completed successfully'},
@@ -116,9 +116,9 @@ st.markdown("---")
 action_col1, action_col2 = st.columns(2)
 
 with action_col1:
-    if st.button("🔄 Refresh Data", use_container_width=True):
+    if st.button("Refresh Data", use_container_width=True):
         st.success("Data refreshed!")
 
 with action_col2:
-    if st.button("📊 Generate Report", use_container_width=True):
+    if st.button("Generate Report", use_container_width=True):
         st.success("Report generated and sent to admin@mealbuddy.com")

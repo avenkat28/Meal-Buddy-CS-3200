@@ -7,17 +7,17 @@ st.set_page_config(page_title="Meal Suggestions", page_icon="💡", layout="wide
 SideBarLinks()
 
 if 'user_type' not in st.session_state:
-    st.warning("⚠️ Please login from the home page first")
+    st.warning("Please login from the home page first")
     st.stop()
 
-st.title("💡 Meal Suggestions")
+st.title("Meal Suggestions")
 st.markdown("Discover recipes based on what you have")
 
 user_id = st.session_state.get('user_id', 3)
 
 st.markdown("---")
 
-st.markdown("### 🔍 Filter Suggestions")
+st.markdown("### Filter Suggestions")
 
 filter_col1, filter_col2, filter_col3 = st.columns(3)
 
@@ -32,7 +32,7 @@ with filter_col3:
 
 st.markdown("---")
 
-st.markdown("### 🍽️ Recommended for You")
+st.markdown("### Recommended for You")
 
 meals = [
     {
@@ -99,7 +99,7 @@ for meal in meals:
                 st.error(meal['difficulty'])
         
         with col3:
-            st.info(f"⏰ {meal['time']} min")
+            st.info(f"{meal['time']} min")
         
         with col4:
             st.metric("Match", f"{meal['match']}%")
@@ -116,14 +116,14 @@ for meal in meals:
                 with col_a:
                     st.write(f"• {missing}")
                 with col_b:
-                    if st.button("🛒 Add", key=f"add_{meal['name']}_{missing}"):
+                    if st.button("Add", key=f"add_{meal['name']}_{missing}"):
                         st.success(f"Added {missing} to grocery list!")
             
-            if st.button("➕ Add to Meal Plan", key=f"plan_{meal['name']}"):
+            if st.button("Add to Meal Plan", key=f"plan_{meal['name']}"):
                 st.success(f"Added {meal['name']} to your meal plan!")
         
         st.markdown("---")
 
-st.markdown("### 💰 Cost-Effective Options")
+st.markdown("### Cost-Effective Options")
 
 st.info("**Save $8.50 this week!** Try 'Chicken Fried Rice' and 'Vegetable Stir-Fry' - you already have most ingredients!")
